@@ -26,6 +26,14 @@ for sentence in sentences:
     print(sentence + " - ", similarity)
 
 #-----------sm DATA SET---------------
+# You get this warning - The model you're using has no word
+# vectors loaded, so the result of the Doc.similarity method 
+# will be based on the tagger, parser and NER, which may not 
+# give useful similarity judgements. This may happen if you're 
+# using one of the small models, e.g. `en_core_web_sm`, which 
+# don't ship with word vectors and only use context-sensitive 
+# tensors. You can always add your own word vectors, or use 
+# one of the larger models instead if available.
 print("========================================")
 print("============sm data set=================")
 
@@ -53,3 +61,6 @@ model_sentence = nlp(sentence_to_compare)
 for sentence in sentences:
     similarity = nlp(sentence).similarity(model_sentence)
     print(sentence + " - ", similarity)
+# seeing the datasts results, we can see with the smaller set 
+# all results have lower confidence and also that they don't seem 
+# to make the same semantic sense
