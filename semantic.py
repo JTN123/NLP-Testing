@@ -64,3 +64,33 @@ for sentence in sentences:
 # seeing the datasts results, we can see with the smaller set 
 # all results have lower confidence and also that they don't seem 
 # to make the same semantic sense
+
+#===============================
+# testing some of my own words, I chose some relavant to my
+# own business in the cannabis industry
+
+#-----------md DATA SET---------------
+nlp = spacy.load('en_core_web_md')
+word1 = nlp("Vape")
+word2 = nlp("Cannabis")
+word3 = nlp("Tobacco")
+print(word1.similarity(word2))
+print(word3.similarity(word2))
+print(word3.similarity(word1))
+
+
+tokens = nlp('cat apple monkey banana ')
+for token1 in tokens:
+    for token2 in tokens:
+        print(token1.text, token2.text, token1.similarity(token2))
+
+sentence_to_compare = "dry herb vaporizer"
+sentences = ["weed vape",
+"cannabis vape",
+"eliquid vape",
+"nicotine vape",
+"vape pen"]
+model_sentence = nlp(sentence_to_compare)
+for sentence in sentences:
+    similarity = nlp(sentence).similarity(model_sentence)
+    print(sentence + " - ", similarity)
